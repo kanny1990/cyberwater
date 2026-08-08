@@ -3,6 +3,7 @@
 <div align="center">
 
 ![CyberWeather](https://img.shields.io/badge/CyberWeather-v1.0-00f0ff?style=for-the-badge)
+![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-8b5cf6?style=for-the-badge)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -10,7 +11,7 @@
 
 **Site de previsão do tempo com estética cyberpunk futurista**
 
-[Demo](#) • [Documentação](#funcionalidades) • [Instalação](#-instalação)
+[🌐 Ver Demo](https://kanny1990.github.io/cyberwater/) • [📖 Documentação](#funcionalidades) • [🚀 Instalação](#-instalação)
 
 </div>
 
