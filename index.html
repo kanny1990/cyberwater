@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberWeather - Previsão Futurista</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div class="particles-container" id="particles"></div>
+    
+    <!-- Scan Lines Effect -->
+    <div class="scan-lines"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="glitch" data-text="CYBER">CYBER</span>
+                <span class="weather-text">WEATHER</span>
+            </div>
+            <div class="header-right">
+                <!-- Analog Clock -->
+                <div class="analog-clock" id="analogClock">
+                    <svg viewBox="0 0 200 200" class="clock-svg">
+                        <!-- Clock face glow -->
+                        <circle cx="100" cy="100" r="95" class="clock-glow"/>
+                        
+                        <!-- Clock face -->
+                        <circle cx="100" cy="100" r="90" class="clock-face"/>
+                        
+                        <!-- Hour markers -->
+                        <g class="hour-markers">
+                            <line x1="100" y1="20" x2="100" y2="30" class="marker marker-12"/>
+                            <line x1="150" y1="36.6" x2="144.3" y2="44.3" class="marker"/>
+                            <line x1="170" y1="100" x2="160" y2="100" class="marker marker-3"/>
+                            <line x1="150" y1="163.4" x2="144.3" y2="155.7" class="marker"/>
+                            <line x1="100" y1="180" x2="100" y2="170" class="marker marker-6"/>
+                            <line x1="50" y1="163.4" x2="55.7" y2="155.7" class="marker"/>
+                            <line x1="30" y1="100" x2="40" y2="100" class="marker marker-9"/>
+                            <line x1="50" y1="36.6" x2="55.7" y2="44.3" class="marker"/>
+                        </g>
+                        
+                        <!-- Hour hand -->
+                        <line x1="100" y1="100" x2="100" y2="55" class="hour-hand" id="hourHand"/>
+                        
+                        <!-- Minute hand -->
+                        <line x1="100" y1="100" x2="100" y2="40" class="minute-hand" id="minuteHand"/>
+                        
+                        <!-- Second hand -->
+                        <line x1="100" y1="100" x2="100" y2="30" class="second-hand" id="secondHand"/>
+                        
+                        <!-- Center dot -->
+                        <circle cx="100" cy="100" r="6" class="center-dot"/>
+                        <circle cx="100" cy="100" r="3" class="center-dot-inner"/>
+                    </svg>
+                    <div class="digital-time" id="digitalTime">00:00</div>
+                </div>
+                
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-icon">◐</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section - City Search & Current Weather -->
+        <section class="hero">
+            <div class="search-container glass-panel">
+                <input type="text" id="citySearch" placeholder="DIGITE A CIDADE..." class="search-input">
+                <button id="searchBtn" class="search-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button id="locationBtn" class="location-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="current-weather glass-panel">
+                <div class="location-info">
+                    <h1 class="city-name" id="cityName">LISBOA</h1>
+                    <p class="date-time" id="dateTime">SAB, 08 AGO 2026 | 14:30</p>
+                    <p class="timezone-info" id="timezoneInfo">Horário Local</p>
+                </div>
+                
+                <div class="main-temp">
+                    <div class="temp-display">
+                        <span class="temperature" id="temperature">24</span>
+                        <span class="unit" id="unit">°C</span>
+                    </div>
+                    <div class="weather-icon" id="weatherIcon">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="60" cy="60" r="25" class="sun-icon"/>
+                            <line x1="60" y1="10" x2="60" y2="25" class="sun-ray"/>
+                            <line x1="60" y1="95" x2="60" y2="110" class="sun-ray"/>
+                            <line x1="10" y1="60" x2="25" y2="60" class="sun-ray"/>
+                            <line x1="95" y1="60" x2="110" y2="60" class="sun-ray"/>
+                            <line x1="25" y1="25" x2="35" y2="35" class="sun-ray"/>
+                            <line x1="85" y1="85" x2="95" y2="95" class="sun-ray"/>
+                            <line x1="85" y1="25" x2="95" y2="35" class="sun-ray"/>
+                            <line x1="25" y1="85" x2="35" y2="95" class="sun-ray"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="weather-description">
+                    <p class="condition" id="condition">Céu Limpo</p>
+                    <p class="feels-like">Sensação: <span id="feelsLike">22°C</span></p>
+                </div>
+
+                <div class="unit-toggle">
+                    <button class="unit-btn active" data-unit="C">°C</button>
+                    <button class="unit-btn" data-unit="F">°F</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hourly Forecast -->
+        <section class="hourly-forecast">
+            <h2 class="section-title">PREVISÃO HORÁRIA</h2>
+            <div class="hourly-container glass-panel">
+                <div class="hourly-scroll" id="hourlyScroll">
+                    <!-- Dynamically filled -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 7-Day Forecast -->
+        <section class="weekly-forecast">
+            <h2 class="section-title">PRÓXIMOS 7 DIAS</h2>
+            <div class="weekly-grid" id="weeklyGrid">
+                <!-- Dynamically filled -->
+            </div>
+        </section>
+
+        <!-- Advanced Metrics -->
+        <section class="metrics">
+            <h2 class="section-title">MÉTRICAS AVANÇADAS</h2>
+            <div class="metrics-grid">
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon">☀</div>
+                    <h3>ÍNDICE UV</h3>
+                    <div class="radial-progress" data-progress="0">
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring-circle-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="52" id="uvCircle"></circle>
+                        </svg>
+                        <div class="progress-value" id="uvIndex">0</div>
+                    </div>
+                    <p class="metric-label" id="uvLabel">Baixo</p>
+                </div>
+
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon">💨</div>
+                    <h3>VENTO</h3>
+                    <div class="radial-progress">
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring-circle-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="52" id="windCircle"></circle>
+                        </svg>
+                        <div class="progress-value" id="windSpeed">0</div>
+                    </div>
+                    <p class="metric-label">km/h</p>
+                </div>
+
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon">💧</div>
+                    <h3>HUMIDADE</h3>
+                    <div class="radial-progress">
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring-circle-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="52" id="humidityCircle"></circle>
+                        </svg>
+                        <div class="progress-value" id="humidity">0%</div>
+                    </div>
+                    <p class="metric-label">Humidade Relativa</p>
+                </div>
+
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon">🌡</div>
+                    <h3>PRESSÃO</h3>
+                    <div class="radial-progress">
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring-circle-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="progress-ring-circle" cx="60" cy="60" r="52" id="pressureCircle"></circle>
+                        </svg>
+                        <div class="progress-value" id="pressure">0</div>
+                    </div>
+                    <p class="metric-label">hPa</p>
+                </div>
+
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon">🌅</div>
+                    <h3>NASCER DO SOL</h3>
+                    <div class="time-display">
+                        <p class="time-value" id="sunrise">06:30</p>
+                    </div>
+                </div>
+
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon">🌇</div>
+                    <h3>PÔR DO SOL</h3>
+                    <div class="time-display">
+                        <p class="time-value" id="sunset">20:45</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="alerts" id="alertsSection" style="display: none;">
+            <h2 class="section-title">⚠ ALERTAS CLIMÁTICOS</h2>
+            <div class="alerts-container" id="alertsContainer">
+                <!-- Dynamically filled -->
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
