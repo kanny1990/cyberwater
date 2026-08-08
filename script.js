@@ -1,5 +1,5 @@
 // API Configuration (usando OpenWeatherMap API - requer API key)
-const API_KEY = '3c07958209e1ddbebd10775059c0ded9'; // Sua chave da OpenWeatherMap
+const API_KEY = 'YOUR_API_KEY_HERE'; // Substitua pela sua chave da OpenWeatherMap
 const API_BASE = 'https://api.openweathermap.org/data/2.5';
 const USE_DEMO_MODE = (API_KEY === 'YOUR_API_KEY_HERE'); // Ativa modo demo automaticamente
 

@@ -36,3 +36,4 @@ build/
 # API Keys (caso mova para arquivo separado no futuro)
 config.js
 secrets.js
+API_KEY_LOCAL.txt
